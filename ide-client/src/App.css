@@ -1,0 +1,20 @@
+#code {
+  min-height: 40vh;
+  min-width: 50vw;
+  width: 100%;
+  resize: none;
+}
+
+#input {
+  min-height: 10vh;
+  min-width: 50vw;
+  width: 100%;
+  resize: none;
+}
+
+#result {
+  min-height: 10vh;
+  min-width: 50vw;
+  width: 100%;
+  resize: none;
+}
