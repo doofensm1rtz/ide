@@ -22,20 +22,15 @@ const python = `# Online Python compiler (interpreter) to run Python online.
 # Write Python 3 code in this online editor and run it.
 print("Hello world")`;
 
-const java = `/******************************************************************************
-
-Online Java Compiler.
-Code, Compile, Run and Debug java program online.
-Write your code in this editor and press "Run" button to execute it.
-
-*******************************************************************************/
+const java = `// Online Java Compiler.
+// Code, Compile, Run java program online.
 
 public class Main
 {
-public static void main(String[] args) {
-System.out.println("Hello World");
-}
+    public static void main(String[] args) {
+    System.out.println("Hello World");
+    }
 }
 `;
 
-export { cpp, c, python, java };
+export const code = { cpp, c, python, java };

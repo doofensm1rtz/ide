@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { cpp, c, python, java } from "../codes/InitCodes";
+import { code } from "../codes/InitCodes";
+import axios from "axios";
 
 export default class Ide extends Component {
   state = {
     lang: "c++",
-    code: cpp,
+    code: code.c,
     result: "Submit code to see result",
   };
 
   onLangChangeHandler = (e) => {
+    const lang = e.target.value;
+
     this.setState({
-      lang: e.target.value,
+      lang,
+      code: code[lang],
     });
   };
 
@@ -26,9 +30,17 @@ export default class Ide extends Component {
     });
   };
 
-  onSubmitHandler = (e) => {
+  onSubmitHandler = async (e) => {
     e.preventDefault();
-    alert("Run code");
+    const res = await axios.post(
+      "http://localhost:5000/code/submit",
+      this.state
+    );
+
+    const data = res.data;
+    this.setState({
+      result: data.err ? data.error : data.output,
+    });
   };
 
   render() {
@@ -44,10 +56,10 @@ export default class Ide extends Component {
               <select
                 className="form-select"
                 id="lang"
-                onChange={this.onLangChangeHandler}
+                onChange={(e) => this.onLangChangeHandler(e)}
               >
-                <option value="c++">C++</option>
                 <option value="c">C</option>
+                <option value="cpp">C++</option>
                 <option value="java">Java</option>
                 <option value="python">Python</option>
               </select>
