@@ -33,8 +33,8 @@ router.post("/submit", (req, res) => {
     case "java":
       return compiler.javaExecute(code, input).then((data) => {
         res.json(data);
-        deleteFile(__dirname + "../../test.java");
-        deleteFile(__dirname + "../../test.class");
+        deleteFile(__dirname + "../../Main.java");
+        deleteFile(__dirname + "../../Main.class");
         deleteFile(__dirname + "../../input.txt");
       });
   }
