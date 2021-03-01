@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default class Ide extends Component {
   state = {
-    lang: "c++",
+    lang: "c",
     code: code.c,
     result: "Submit code to see result",
   };

@@ -22,7 +22,8 @@ const python = `# Online Python compiler (interpreter) to run Python online.
 # Write Python 3 code in this online editor and run it.
 print("Hello world")`;
 
-const java = `// Online Java Compiler.
+const java = `// DONT CHANGE THE NAME OF MAIN CLASS
+// Online Java Compiler.
 // Code, Compile, Run java program online.
 
 public class Main

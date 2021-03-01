@@ -1,13 +1,43 @@
 const express = require("express");
 const router = express.Router();
-const { cExecute } = require("../compile/compile");
+const compiler = require("../compile/compile");
+const { deleteFile } = require("../helpers/helpers");
 
 router.post("/submit", (req, res) => {
   const { input, lang, code } = req.body;
-  console.log("\nCode", code, "\nInput", input);
-  return cExecute(code, input).then((data) => {
-    res.json(data);
-  });
+
+  switch (lang) {
+    case "c":
+      return compiler.cExecute(code, input).then((data) => {
+        res.json(data);
+        deleteFile(__dirname + "../../test.c");
+        deleteFile(__dirname + "../../input.txt");
+        deleteFile(__dirname + "../../a.exe");
+      });
+
+    case "cpp":
+      return compiler.cppExecute(code, input).then((data) => {
+        res.json(data);
+        deleteFile(__dirname + "../../test.cpp");
+        deleteFile(__dirname + "../../input.txt");
+        deleteFile(__dirname + "../../a.exe");
+      });
+
+    case "python":
+      return compiler.pythonExecute(code, input).then((data) => {
+        res.json(data);
+        deleteFile(__dirname + "../../test.py");
+        deleteFile(__dirname + "../../input.txt");
+      });
+
+    case "java":
+      return compiler.javaExecute(code, input).then((data) => {
+        res.json(data);
+        deleteFile(__dirname + "../../test.java");
+        deleteFile(__dirname + "../../test.class");
+        deleteFile(__dirname + "../../input.txt");
+      });
+  }
 });
 
 module.exports = router;

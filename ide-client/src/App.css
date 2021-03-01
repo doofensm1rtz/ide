@@ -13,8 +13,9 @@
 }
 
 #result {
-  min-height: 10vh;
+  min-height: 30vh;
   min-width: 50vw;
   width: 100%;
   resize: none;
+  margin-bottom: 20px;
 }
